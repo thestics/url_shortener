@@ -27,4 +27,4 @@ def index(request):
 
 def short_link(request, link_id):
     url = urls_get(short=link_id)
-    return redirect(url)
+    return redirect(url.long)

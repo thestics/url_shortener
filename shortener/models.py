@@ -2,6 +2,7 @@ from django.db import models
 
 from shortener.const import URL_SIZE
 
+
 class Urls(models.Model):
 
     short = models.CharField(name='short',
@@ -11,3 +12,4 @@ class Urls(models.Model):
                             verbose_name='Target url',
                             max_length=2048)
     expire_date = models.DateTimeField(name='expire_date')
+    used_times = models.PositiveIntegerField(default=0)
