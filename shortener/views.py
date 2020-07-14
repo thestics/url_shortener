@@ -1,13 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 from shortener.forms import LinkCreationForm
 from shortener.db_services import urls_create
+from shortener.db_selectors import urls_get
 
 
 def index(request):
-    print(request.POST)
-
     if request.method == "POST":
         form = LinkCreationForm(request.POST)
 
@@ -22,3 +21,8 @@ def index(request):
 
     context = {'form': LinkCreationForm}
     return render(request, 'index.html', context)
+
+
+def short_link(request, link_id):
+    url = urls_get(short=link_id)
+    return redirect(url)
