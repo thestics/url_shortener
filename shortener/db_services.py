@@ -4,7 +4,6 @@
 
 import random
 import string
-import datetime
 
 import datetime
 
@@ -21,10 +20,16 @@ def _rand_identifier(size: int):
 
     return res
 
+
 def urls_create(*, url: str, expires: str):
+    """Create new short url from long url"""
     new_id = _rand_identifier(URL_SIZE)
     expires += '+00:00'
     expire_date = datetime.datetime.fromisoformat(expires)
 
+    # remove old if they were
+    Urls.objects.filter(long=url).delete()
+
+    # add new
     Urls.objects.create(short=new_id, long=url, expire_date=expire_date)
     return new_id
