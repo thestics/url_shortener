@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+# -*-encoding: utf-8-*-
+# Author: Danil Kovalenko
+
+
+URL_SIZE = 16
