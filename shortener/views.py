@@ -5,7 +5,7 @@ from django.http import JsonResponse
 
 from shortener.forms import LinkCreationForm
 from shortener.db_services import urls_create
-from shortener.db_selectors import urls_get
+from shortener.db_selectors import urls_get, urls_used_times
 
 
 def index(request):
@@ -28,3 +28,9 @@ def index(request):
 def short_link(request, link_id):
     url = urls_get(short=link_id)
     return redirect(url.long)
+
+
+def stats(request):
+    stats = urls_used_times()
+    context = {'stats': stats}
+    return render(request, 'stats.html', context)

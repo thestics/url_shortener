@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <table class="table table-hover">
+        <tr><td>Short Link</td><td>Link</td><td>User times</td></tr>
+
+        {% for short, link, times in stats %}
+            <tr>
+                <td>{{ short }}</td>
+                <td>{{ link }}</td>
+                <td>{{ times }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

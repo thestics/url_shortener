@@ -3,7 +3,7 @@ from django.db import models
 from shortener.const import URL_SIZE
 
 
-class Urls(models.Model):
+class Url(models.Model):
 
     short = models.CharField(name='short',
                              verbose_name='Short url',

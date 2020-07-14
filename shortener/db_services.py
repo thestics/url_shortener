@@ -7,7 +7,7 @@ import string
 
 import datetime
 
-from shortener.models import Urls
+from shortener.models import Url
 from shortener.const import URL_SIZE
 
 
@@ -27,9 +27,6 @@ def urls_create(*, url: str, expires: str):
     expires += '+00:00'
     expire_date = datetime.datetime.fromisoformat(expires)
 
-    # remove old if they were
-    Urls.objects.filter(long=url).delete()
-
     # add new
-    Urls.objects.create(short=new_id, long=url, expire_date=expire_date)
+    Url.objects.create(short=new_id, long=url, expire_date=expire_date)
     return new_id

@@ -22,5 +22,6 @@ from shortener import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('stats', views.stats, name='stats'),
     re_path(r'^(?P<link_id>\w+)', views.short_link, name='short_link')
 ]
